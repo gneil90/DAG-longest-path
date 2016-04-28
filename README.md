@@ -3,9 +3,13 @@
 In digital form the map looks like the number grid below.
 
 4 4 
+
 4 8 7 3 
+
 2 5 9 3 
+
 6 3 2 5 
+
 4 4 1 6
 
 The first line (4 4) indicates that this is a 4x4 map. 
