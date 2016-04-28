@@ -8,17 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		D085019B1CD1DBEC00EE5FAA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D085019A1CD1DBEC00EE5FAA /* main.m */; };
+		D08501A71CD236A800EE5FAA /* map.txt in CopyFiles */ = {isa = PBXBuildFile; fileRef = D08501A21CD1DC1D00EE5FAA /* map.txt */; };
+		D08501A81CD236C500EE5FAA /* map_test.txt in CopyFiles */ = {isa = PBXBuildFile; fileRef = D08501A31CD1DC4100EE5FAA /* map_test.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		D08501951CD1DBEC00EE5FAA /* CopyFiles */ = {
+		D08501A61CD2366700EE5FAA /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
+			dstPath = "";
+			dstSubfolderSpec = 16;
 			files = (
+				D08501A81CD236C500EE5FAA /* map_test.txt in CopyFiles */,
+				D08501A71CD236A800EE5FAA /* map.txt in CopyFiles */,
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
@@ -83,7 +87,7 @@
 			buildPhases = (
 				D08501931CD1DBEC00EE5FAA /* Sources */,
 				D08501941CD1DBEC00EE5FAA /* Frameworks */,
-				D08501951CD1DBEC00EE5FAA /* CopyFiles */,
+				D08501A61CD2366700EE5FAA /* CopyFiles */,
 			);
 			buildRules = (
 			);

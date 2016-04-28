@@ -8,9 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-#warning define your own path to the map.text 
+#warning define your own path to the map.text if you want absolute path as an input, now in this project used Copy Files build phase, when map.txt and map_test.txt are loaded. if you want to do custom testing, just update the map.txt file
 
-#define DAG_MAP_PATH @"/Users/aidapedersen/Documents/Apps/DAG-longest-path/DAG-longest-path/map.txt"
+//#define DAG_MAP_PATH @"/Users/aidapedersen/Documents/Apps/DAG-longest-path/DAG-longest-path/map.txt"
 
 typedef enum {
   DAGCardinalDirectionWest,
@@ -36,15 +36,17 @@ typedef enum {
 
 @end
 
+#pragma mark- Main
+
 int main(int argc, const char * argv[]) {
   @autoreleasepool {
       // insert code here...
     NSError * err = nil;
-    DAGMap * map = [[DAGMap alloc] initWithPath:DAG_MAP_PATH error:&err];
+    DAGMap * map = [[DAGMap alloc] initWithPath:nil error:&err];
     if (err) {
       NSLog(@"error during .txt initialization: %@", err);
-      return 0;
     }
+    
     [map findLongestPath];
     NSLog(@"%@", map.longestRoute);
 
@@ -52,6 +54,7 @@ int main(int argc, const char * argv[]) {
     return 0;
 }
 
+#pragma mark- Map
 
 @interface DAGMap()
 
@@ -67,6 +70,8 @@ int main(int argc, const char * argv[]) {
 - (void)parseTextFileAtPath:(NSString *)path error:(NSError **)error;
 
 @end
+
+#pragma mark- Vertex
 
 @interface DAGVertex : NSObject
 
@@ -93,6 +98,8 @@ int main(int argc, const char * argv[]) {
 
 @end
 
+#pragma mark- Route
+
 @interface DAGRoute : NSObject
 - (instancetype)initWithVertices:(NSArray *)vertices;
 - (instancetype)initWithVertex:(DAGVertex *)vertex;
@@ -105,6 +112,8 @@ int main(int argc, const char * argv[]) {
 - (void)addVertex:(DAGVertex *)vertex;
 
 @end
+
+#pragma mark- Implemetations
 
 @implementation DAGMap
 
@@ -119,11 +128,11 @@ int main(int argc, const char * argv[]) {
 
 - (void)parseTextFileAtPath:(NSString *)path error:(NSError **)error {
   @autoreleasepool {
-    NSString * map = [[NSString alloc] initWithContentsOfFile:path
-                                                     encoding:NSUTF8StringEncoding error:error];
-    if (error) {
+    if (!path) {
+      path = @"map.txt";
     }
-    
+    NSString * map = [[NSString alloc] initWithContentsOfFile:path
+                                                     encoding:NSUTF8StringEncoding error:error];    
     NSArray* lines = [map componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
     
     NSMutableArray * topology = [NSMutableArray array];
